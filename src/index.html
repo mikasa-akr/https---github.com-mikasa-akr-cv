@@ -1,6 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <style>
+    body {
+      position: relative; /* Ensure the body is positioned to allow the pseudo-element overlay */
+      background-image: url('..//public/dark-background-abstract-with-light-effect-vector.jpg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: 0 0;
+      animation: moveAndZoom 20s linear infinite;
+      height: auto;
+    }
+
+    /* Pseudo-element for overlay */
+    body::before {
+      content: ''; /* Create an empty pseudo-element */
+      position: absolute; /* Position it absolutely to cover the whole body */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% opacity */
+      pointer-events: none; /* Ensure it doesn't block interactions */
+      z-index: 1; /* Ensure it's on top of the background image */
+    }
+
+    @keyframes moveAndZoom {
+      0% {
+        background-position: 0 0;
+        background-size: 100%;
+      }
+      50% {
+        background-position: 50% 50%;
+        background-size: 120%;
+      }
+      100% {
+        background-position: 100% 0;
+        background-size: 100%;
+      }
+    }
+
+    /* App-root styling if needed */
+    app-root {
+      position: relative; /* Ensure it's positioned above the overlay */
+      z-index: 2; /* Ensure it's above the overlay */
+    }
+  </style>
   <meta charset="utf-8">
   <title>Cv</title>
   <base href="/">
