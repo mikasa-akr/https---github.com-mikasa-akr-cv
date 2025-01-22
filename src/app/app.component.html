@@ -1,7 +1,7 @@
 <style>
     .div1 {
         position: fixed;
-        margin-left: 25%;
+        margin-left: 23%;
         margin-top: 15%;
         display: flex;
         justify-content: center;
@@ -71,10 +71,12 @@
 
     .resume-section {
         padding: 20px;
-        width: 50%; /* Adjust width as needed */
+        width: 60%; /* Adjust width as needed */
         color: white;
         display: flex;
         flex-direction: column;
+        max-height: 100%; /* Set the maximum height as per your layout */
+        overflow-y: auto; /* Enables vertical scrolling */
     }
 
     .resume-section h1 {
@@ -86,6 +88,7 @@
     .resume-section p {
         margin: 0; /* Remove default margin */
         font-size: 18px;
+        padding: 0.3cm;
     }
 
     .icons-wrapper {
@@ -95,12 +98,13 @@
         align-items: center;
         flex-grow: 1; /* This makes the icons section take up the remaining space */
         margin-top: auto; /* This ensures icons move to the middle, pushing them down */
+        
     }
     
     .sidebar i {
         font-size: 25px;
         color: #484747;
-        padding: 12px;
+        padding: 10px;
         cursor: pointer;
     }
 
@@ -128,32 +132,42 @@
         90% { opacity: 1; }
         100% { opacity: 0; }
     }
-
-    @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
-
+    
     hr{
         color: rgb(0, 208, 255);
     }
+
     label{
         font-size: 20px;
         padding: 5px;
     }
-    input{
-    -webkit-appearance: none;
-    appearance: none;
-    height: 8px; /* Track height */
-    background: aqua; /* Track color */
-    border-radius: 5px; /* Rounded corners for the track */
-    outline: none; /* Remove outline when focused */
-    opacity: 0.7; /* Slightly transparent track */
-    transition: opacity 0.2s; /* Smooth transition */
+
+    .service-section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Allows items to wrap to the next line */
+        gap: 20px; /* Adds space between the items */
     }
-    input:hover {
-        opacity: 1;
+    .service-section div {
+        width: 45%; /* Sets each item to take up about half of the container width */
     }
+    
+    .service-section img {
+        margin-bottom: 10px; /* Add space below images */
+    }
+    
+    .service-section h4 {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+    
+    .service-section p {
+        text-align: left;
+        font-size: 0.9em;
+        color: #a8a8a8;
+    }
+    
+
 </style>
 
 <main (scroll)="onScroll($event)" style="height: 101vh;">
@@ -166,12 +180,13 @@
         <!-- Sidebar Section -->
         <div class="sidebar">
             <div class="h1">
-                <b>CA</b>
+                <a routerLink="/"><b>CA</b></a>
             </div>
             <div class="icons-wrapper">
-                <i class="bi bi-house"></i> <!-- Home icon -->
-                <i class="bi bi-bag"></i> <!-- Settings icon -->
-                <i class="bi bi-person"></i> <!-- User icon -->
+                <a routerLink="/"><i class="bi bi-house"></i></a>
+                <a routerLink="/resum"><i class="bi bi-bag"></i></a>
+                <a routerLink="/competence"><i class="bi bi-person"></i></a>
+
             </div>
         </div>
 
@@ -191,21 +206,36 @@
 
             <!-- Resume Section (Text Section) -->
             <div class="resume-section">
-                <h1>RESUME</h1>
+                <div *ngIf="isRootPath">
+                <h1>About me</h1>
                 <hr>
                 <p>I am currently a graduate student with a degree in Multimedia and Web Development from the Higher Institute of Technological Studies of Sousse. My academic journey and experiences have allowed me to gain solid skills in the fields of web development and multimedia.</p>
                 <hr>
-               <h2>Skills</h2>
-               <label>Fullstack Developer</label>
-               <input type="range" value="75"> 
-               <label>Back-end Developer</label>
-               <input type="range" value="70"> 
-               <label>Front-end Developer</label>
-               <input type="range" value="60">
-               <label>UI/UX Designer</label>
-               <input type="range" value="65">
+                <h2>My Services</h2>
+                <div class="service-section">
+                    <div>
+                        <img src="../..//public/developpement.png" style="height: 4vh;" alt="developement">
+                       <h4>Development</h4>
+                       <p>Experienced in designing, coding, and implementing web applications with a focus on both front-end and back-end technologies.</p> 
+                    </div>
+                    <div>
+                        <img src="../..//public/infographie.png" style="height: 4vh;" alt="infographiste">
+                        <h4>infographiste</h4>
+                        <p>Creative professional with expertise in graphic design, specializing in creating visually engaging content for various digital platforms.</p>
+                    </div>
+                    <div>
+                        <img src="../..//public/uiux.png" style="height: 4vh;" alt="uiux">
+                       <h4>UI/UX</h4> 
+                       <p>Passionate about crafting user-centered interfaces and experiences that prioritize usability and aesthetics.</p>
+                    </div>
+                </div>
+               <hr>
+            </div>
+               <router-outlet></router-outlet>
             </div>
         </div>
     </div>
 </main>
-<router-outlet></router-outlet>
+
+
+

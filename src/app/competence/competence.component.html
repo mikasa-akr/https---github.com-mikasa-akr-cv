@@ -1,1 +1,155 @@
-<p>competence works!</p>
+<style>
+
+    .input2{
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px; 
+        background: aqua; 
+        border-radius: 5px; 
+        outline: none;
+        opacity: 0.8; 
+        }
+        
+        .input2::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #1ed6ff;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+          }
+    
+          .input2::-moz-range-thumb {
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #1ed6ff;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            animation: move 1s ease-in-out forwards;
+        }
+        @keyframes move {
+            0% {transform: translateX(-250px); }
+            100% {transform: translateX(0px); }
+        }
+        
+        .input2::-moz-range-thumb:hover {
+            transform: scale(1.5);
+        }
+        .input2::-webkit-slider-thumb:hover {
+            transform: scale(1.5);
+        }
+
+        hr{
+            color: rgb(0, 208, 255);
+        }
+    
+        label{
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        i {
+            font-size: 4vh;
+            color: aqua;
+            cursor: pointer;
+        }
+        .span{
+            font-size: 31px; /* or any preferred size */
+        }
+        p{
+            font-family: poppins,sans-serif
+        }
+        .experience-section {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; /* Allows items to wrap to the next line */
+            gap: 20px; /* Adds space between the items */
+        }
+        .experience-section div{
+            width: 46%;
+            padding: 0.3cm;
+        }
+        .experience-section div p {
+            width: 200%; /* Ensure the paragraph takes full width */
+            margin: 5px; /* Remove default margin */
+        }
+        h6{
+            color: aqua;
+        }
+        .l{
+            color: rgb(185, 185, 185);
+        }
+
+
+</style>
+<main>
+    <h1>About me</h1>
+    <p>I am currently a graduate student with a degree in Multimedia and Web Development from the Higher Institute of Technological Studies of Sousse. My academic journey and experiences have allowed me to gain solid skills in the fields of web development and multimedia.</p>
+    <hr>
+    <span class="span"><i class="bi bi-speedometer2"></i> Skills</span>        
+    <div>
+        <label>Fullstack Developer</label>
+        <input type="range" value="75" class="input2" step="75">
+        <label>Back-end Developer</label>
+        <input type="range" value="70"  class="input2" step="70"> 
+        <label>Front-end Developer</label>
+        <input type="range" value="60"  class="input2" step="60">
+        <label>UI/UX Designer</label>
+        <input type="range" value="65"  class="input2" step="65">
+        </div>
+        <hr>
+
+    <div class="experience-section">
+        <div>
+            <span class="span"><i class="bi bi-mortarboard"></i> Education</span>
+            <div>
+            <h6>2022/2024</h6>
+           <p><b>ISET SOUSSE</b></p> 
+           <p class="l">Sousse</p>
+           <p>Diplome in web development and multimedia</p>
+            </div>
+           <div> 
+            <h6>2021/2022</h6>
+            <p><b>ISET Beja</b></p> 
+            <p class="l">Beja</p>
+            <p>1er informatique</p>
+             </div>
+            <div>
+                <h6>2017/2021</h6>
+            <p><b>High school ibn rochod</b></p>
+            <p class="l">Zarzis</p> 
+            <p>baccalaureate in experimental science</p>
+            </div> 
+        </div>
+        <div>
+            <span class="span"><i class="bi bi-briefcase"></i> Experience</span>
+            <div>
+                <h6>2024</h6>
+               <p><b>OCTA PLUS</b></p> 
+               <p class="l">PFE</p>
+               <p>Develope website e-learning online using react and symfony</p>
+                </div>
+
+                <div>
+                    <h6>2023</h6>
+                    <p><b>PROXIWEB</b></p> 
+                    <p class="l">PFE</p>
+                   <p>Develope website taxi driver using angular and spring-boot</p>
+                    </div>
+
+                    <div>
+                        <h6>2022</h6>
+                        <p><b>TELECOM</b></p> 
+                        <p class="l">PFE</p>
+                       <p>explore the agency and the communication with client</p>
+                        </div>
+        </div>
+    </div>
+</main>

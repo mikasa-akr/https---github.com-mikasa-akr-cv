@@ -1,18 +1,18 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { RouterModule,Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet,CommonModule,RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  isRootPath = false;
   check=true;
   showSecondPart = false;
-
-  constructor() {
+  constructor(private router: Router) {
     // Show the second part after 4 seconds
     setTimeout(() => {
       this.showSecondPart = true;
@@ -25,4 +25,11 @@ export class AppComponent {
       console.log('Window scrolled:', event);
       this.check = false;
   }
+
+  ngOnInit() {
+    this.router.events.subscribe(() => {
+      this.isRootPath = this.router.url === '/';
+    });
+  }
+
 }
